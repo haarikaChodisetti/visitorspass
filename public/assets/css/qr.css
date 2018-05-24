@@ -1,0 +1,19 @@
+.form-line {
+.qr-out {
+  img {
+    margin:2rem auto;
+    display:block;
+  }
+}
+.biscard-out {
+  margin:1rem 0;
+  .biscard-img {
+    border:1px solid #ccc;
+    border-left:1rem solid #ccc;
+    padding:1.5rem;
+    float:left;
+    h3 {
+      margin-top:0;
+    }
+  }
+}

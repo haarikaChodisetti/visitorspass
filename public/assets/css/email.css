@@ -1,0 +1,176 @@
+html { box-sizing: border-box; }
+*,*:before,*:after { box-sizing: inherit; }
+
+
+
+
+legend { 
+    // Position legend within fieldset and clear 
+    // label float by adding full width
+    float:left;
+    width:100%;
+}
+label  { 
+    // Float the label to make it 
+    float:left;
+ 
+}
+input, button  { 
+    // Create isolate float to make the input 
+    // succeed the corresponding label
+    float:left;
+    margin-right:-100%;
+    
+    // Clear float to position input-label  
+    // pairs on top of eachother
+    clear:left;
+    
+    // Use top margin to push the input down by the 
+    // amount of space required to fit in the label 
+    // and use bottom margin to handle proximity
+    margin-top:20px;
+    margin-bottom:25px;
+    
+    
+    // General styling prefs
+    // Set a minimum font size of 16px to prevent 
+    // zoom on iOS devices
+    font-size:16px;
+    // Remove default focus outline
+    // and offset to cover border
+    outline:2px solid rgba(0,0,0,0);
+    outline-offset:-1px; 
+    
+}
+
+// Add required asterix to corresponding labels
+// Note! you could also use the attribute selector
+// [required] + label:after { ... }
+label:after {position:absolute; margin-left:5px; margin-top:-3px;}
+input:required + label:after { 
+    content: '*';
+    font-weight:900;
+    color:tomato;
+}
+input:required:valid + label:after { 
+    content:'\2713';
+    color:OliveDrab ;
+}
+
+// Add warning on invalid non required fields
+input:not(:required):invalid + label:after { 
+    content: '!';
+    font-weight:900;
+    color:tomato;    
+}
+
+
+// Disable submit button if form 
+// contains invalid fields
+form *:invalid ~ button {
+    pointer-events: none;
+}
+
+// Button styles (default and disabled)
+button {
+    border:1px solid silver; 
+    width:100%;
+    line-height:40px;   
+    background: OliveDrab;
+    color:white;
+    cursor:pointer;
+}
+form *:invalid ~ button { 
+    background: whitesmoke;
+    color:#ccc;
+    cursor:default;    
+}
+
+
+// To work on IE10 (without pointer events support)
+// we toggle the between the regular and disabled
+// button depending on form validity
+button[disabled],
+form input:invalid ~ button:not([disabled]) { 
+    display: none; 
+}
+button:not([disabled]) ,
+form input:invalid ~ button[disabled] {
+    display:inline-block;
+}
+
+
+
+// Field guide text to be displayed on focus
+.field-guide {
+    opacity:0;
+    float:left;
+    clear:left;
+    margin-top:-15px;
+    font-size:12px;    
+    line-height:15px;
+    color:silver;
+}
+input:focus + label + .field-guide { 
+    position:relative;
+    max-height:20px;
+    opacity:1;
+}
+
+
+// Field focus outline 
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=tel]:focus,
+input[type=password]:focus{
+   outline:2px solid dodgerblue 
+}
+
+
+
+
+
+
+// Just some styling
+* {
+    transition:all 0.5s;
+}
+fieldset {
+    padding:36px;
+    margin:0 auto;
+    display:block;
+    max-width:440px;
+    border:1px solid silver;
+}
+legend {
+    text-align: center;    
+    margin-bottom:20px;
+    font-size:50px;
+}
+input {
+    font-size:20px;
+    border:1px solid #ccc;
+}
+label,p {
+    font-family:sans-serif;
+    font-size:14px;
+}
+[id=terms],[id=newsletter]{
+   margin-top:0;
+}
+[for=terms], [for=newsletter]{
+   margin-left:30px;
+}
+
+button {
+    border-radius:7px;
+}
+legend+p {
+    text-align:center;
+    color:silver;
+}
+hr {
+    float:left;width:100%;
+    margin:0 0 20px;
+    border:0; border-top:1px dashed #efefef;}
+

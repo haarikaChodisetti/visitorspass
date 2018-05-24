@@ -1,0 +1,96 @@
+@import "compass/css3";
+
+/* Simple SCSS hover animations using font-awesome icons by dehash.com released under MIT License http://opensource.org/licenses/MIT */
+@mixin pulse ($n) {
+0%{transform: scaleX(1) scaleY(1);}
+@for $i from 1 through 9 {
+$m:1;
+@if $i % 2 !=0 {$m: $n;}
+#{$i*10%}{transform:scaleX($m) scaleY($m)}
+}
+100%{transform: scaleX(1) scaleY(1);}
+}
+
+@mixin shake ($n) {
+0%{transform: rotateZ(0);}
+$pos: 1;
+@for $i from 1 through 9 {
+$pos: $pos * -1;
+$m: ($n / $i) * $pos;
+#{$i*10%}{transform:  rotateZ($m * 1deg)}
+}
+100%{transform: rotateZ(0);}
+}
+
+@keyframes pulse {
+@include pulse(0.85);
+}
+@keyframes shake {
+@include shake(30);
+}
+@keyframes spin {
+to{transform:rotateZ(720deg)}
+}
+//---------------------------------------------------
+body {
+background-color: #262626;
+margin: 20px;
+}
+.wrap {
+background-color: #8c4646;
+color:#f2e394;
+margin: 20px;
+padding: 20px;
+display: inline-block;
+box-shadow: -1px -1px 4px #f2ae72;
+-webkit-backface-visibility: hidden;
+}
+div[class*=icon]{
+text-shadow: 2px 2px 4px #333;
+display: inline-block;
+-webkit-backface-visibility: hidden;
+}
+.container {
+position: relative;
+perspective: 100px;
+transform-style: preserve-3d;
+width: 80%;
+}
+#phoneicon {
+display: inline-block;
+color:#ff6f69;
+}
+#phonewrap:hover > div {
+animation: shake 1200ms;
+}
+#bellicon{
+display: inline-block;
+transform-origin: 50% 0%;
+color:#fa9600;
+}
+#bellwrap:hover > div {
+animation: shake 1300ms;
+}
+#asteriskicon{
+display: inline-block;
+transform-origin: 50% 50%;
+}
+#asteriskwrap:hover > div {
+animation: spin 3000ms;
+}
+#headphonesicon{
+display: inline-block;
+transform-origin: 50% 50%;
+color:#f2ae72;
+}
+#headphoneswrap:hover > div {
+animation: pulse 1500ms;
+}
+#hearticon{
+display: inline-block;
+transform-origin: 50% 50%;
+color:#ff6f69;
+}
+#heartwrap:hover > div {
+animation: pulse 1500ms;
+}
