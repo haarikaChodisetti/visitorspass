@@ -97,4 +97,4 @@ router.post('/vpsubmit',function(req,res){
     });
 });
    
-module.exports = route
+module.exports = router;
