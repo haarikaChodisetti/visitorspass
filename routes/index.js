@@ -96,5 +96,11 @@ router.post('/vpsubmit',function(req,res){
     }
     });
 });
-   
+//pdf code
+router.post('/pdf', function(req,res){
+  console.log(req.body.sno);
+  vpsubmit.find({},function(err,docs){
+  res.send(docs);
+  });
+});
 module.exports = router;
